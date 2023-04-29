@@ -1,5 +1,6 @@
 class RemoteUrls {
   static const String rootUrl = "https://api.websolutionus.com/shopo-test/";
+  // static const String rootUrl = "https://shopotest.minionionbd.com/";
   // static const String rootUrl = "https://api.websolutionus.com/shopo-v3/";
 
   static const String baseUrl = '${rootUrl}api/';
@@ -60,5 +61,4 @@ class RemoteUrls {
       "${baseUrl}deliveryman/update-order-status/$id?token=$token";
 
   static imageUrl(String imageUrl) => rootUrl + imageUrl;
-
 }

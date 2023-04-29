@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopo_delivery/modules/order/request_order_details.dart';
-import 'package:shopo_delivery/modules/profile/model/profile_model.dart';
-import 'package:shopo_delivery/modules/withdraw/waller_screen.dart';
 
+import '/modules/order/request_order_details.dart';
+import '/modules/withdraw/waller_screen.dart';
 import '../modules/animated_splash_screen/animated_splash_screen.dart';
 import '../modules/authentication/authentication_screen.dart';
 import '../modules/authentication/forgot_screen.dart';

@@ -2,21 +2,20 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:shopo_delivery/modules/dashboard/model/order_model.dart';
-import 'package:shopo_delivery/modules/order/model/order_details_model.dart';
-import 'package:shopo_delivery/modules/profile/model/profile_model.dart';
-import 'package:shopo_delivery/modules/withdraw/components/withdraw_dialog.dart';
-import 'package:shopo_delivery/modules/withdraw/model/withdraw_model.dart';
+
+import '/core/data/datasources/network_parser.dart';
+import '/modules/dashboard/model/order_model.dart';
+import '/modules/order/model/order_details_model.dart';
+import '/modules/profile/model/profile_model.dart';
+import '/modules/withdraw/model/withdraw_model.dart';
+import '../../../modules/authentication/models/set_password_model.dart';
+import '../../../modules/authentication/models/user_login_response_model.dart';
 import '../../../modules/dashboard/model/dashboard_model.dart';
 import '../../../modules/setting/model/website_setup_model.dart';
 import '../../../modules/withdraw/controller/create_withdraw/create_withdraw_state_model.dart';
 import '../../../modules/withdraw/model/account_info_model.dart';
 import '../../../modules/withdraw/model/method_model.dart';
 import '../../remote_urls.dart';
-import '/core/data/datasources/network_parser.dart';
-
-import '../../../modules/authentication/models/set_password_model.dart';
-import '../../../modules/authentication/models/user_login_response_model.dart';
 
 Map<String, dynamic> myMap = {};
 
@@ -373,7 +372,8 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   }
 
   @override
-  Future<String> orderRunningUpdate(String id, Map<String, String> map, String token)async {
+  Future<String> orderRunningUpdate(
+      String id, Map<String, String> map, String token) async {
     final url = Uri.parse(RemoteUrls.orderRunningUpdateUrl(id, token));
     final headers = {
       'Accept': 'application/json',
@@ -381,7 +381,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     };
     final clientMethod = client.put(url, body: map, headers: headers);
     final responseBody =
-    await NetworkParser.callClientWithCatchException(() => clientMethod);
+        await NetworkParser.callClientWithCatchException(() => clientMethod);
 
     return responseBody['message']['messege'];
   }
